@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>路由跳转方式 | Hello AspNetCore</title>
+    <meta name="description" content="Just playing around">
+    
+    
+    <link rel="preload" href="/assets/css/0.styles.7a9e7dbd.css" as="style"><link rel="preload" href="/assets/js/app.c7651fcb.js" as="script"><link rel="preload" href="/assets/js/5.2c818d1b.js" as="script"><link rel="prefetch" href="/assets/js/3.90fcbf97.js"><link rel="prefetch" href="/assets/js/2.234811cb.js"><link rel="prefetch" href="/assets/js/4.92d10c23.js"><link rel="prefetch" href="/assets/js/6.97c9f8ef.js"><link rel="prefetch" href="/assets/js/7.d9a9fa3e.js"><link rel="prefetch" href="/assets/js/8.72eb2876.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7a9e7dbd.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Hello AspNetCore</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/aspnetcore/" class="nav-link">AspNetCore</a></div><div class="nav-item"><a href="/ant-pro/" class="nav-link router-link-exact-active router-link-active">AntPro</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/aspnetcore/" class="nav-link">AspNetCore</a></div><div class="nav-item"><a href="/ant-pro/" class="nav-link router-link-exact-active router-link-active">AntPro</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/ant-pro/" class="active sidebar-link">路由跳转方式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/ant-pro/#路由跳转方式" class="sidebar-link">路由跳转方式</a></li></ul></li></ul> </div> <div class="page"> <div class="content"><h2 id="路由跳转方式"><a href="#路由跳转方式" aria-hidden="true" class="header-anchor">#</a> 路由跳转方式</h2> <p>常用的主要有两种方式,一种是直接跳到指定的url,不需要带额外的参数,另外一种是把跳转前的页面地址保存到url中,在新的地址中会用到,例如登录场景,当正常访问网页时登录权限失效后,会跳转到登录页,如果登录成功,会再跳到之前正在访问的页面.
+两种方式对应了 replace 和 push 两种操作</p> <ul><li>直接 <code>replace</code> 掉 url,保证生成的 <code>url</code> 是确定的</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>routerRedux<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  pathname<span class="token punctuation">:</span> <span class="token string">'/user/login'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><ul><li>使用 <code>push</code> 操作修改 url, 并增加 <code>returnUrl</code> 方便后序进行跳转</li></ul> <div class="language-javascript line-numbers-mode"><pre class="language-javascript"><code>routerRedux<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  pathname<span class="token punctuation">:</span> <span class="token string">'/user/login'</span><span class="token punctuation">,</span>
+  search<span class="token punctuation">:</span> <span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    redirect<span class="token punctuation">:</span> window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href <span class="token comment">// 当前的 url</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div></div> <div class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">9/19/2018, 9:24:09 PM</span></div></div> <!----> </div> <!----></div></div>
+    <script src="/assets/js/5.2c818d1b.js" defer></script><script src="/assets/js/app.c7651fcb.js" defer></script>
+  </body>
+</html>
